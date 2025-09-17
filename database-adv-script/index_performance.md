@@ -27,3 +27,15 @@ Tables with related data to perform indexing on.
 A database schema that includes tables such as properties, users, and bookings for the provided queries to work correctly.
 Ensure that your database contains the necessary tables and data to execute the queries successfully.
 Adjust the database connection parameters as needed for your environment.
+
+- Creating index on properties table for frequently searched columns
+CREATE INDEX idx_properties_location ON properties(location);
+CREATE INDEX idx_properties_price ON properties(price);
+
+-- Creating index on users table for email, often used in lookups
+CREATE INDEX idx_users_email ON users(email);
+
+-- Creating indexes on bookings table for foreign keys and date
+CREATE INDEX idx_bookings_property_id ON bookings(property_id);
+CREATE INDEX idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX idx_bookings_booking_date ON bookings(booking_date);
